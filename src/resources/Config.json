@@ -1,0 +1,14 @@
+{
+  "platformName": "Android",
+  "deviceName": "Nothing Phone 2A",
+  "udid": "9014eff7",
+  "appPackage": "com.androidsample.generalstore",
+  "appActivity": "com.androidsample.generalstore.SplashActivity",
+  "noReset": true,
+  "automationName": "UiAutomator2",
+  "noReset": false,
+  "autoGrantPermissions": true,
+  "unlockType": "pin",
+  "unlockKey": "2481",
+  "newCommandTimeout":60
+}
