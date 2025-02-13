@@ -3,6 +3,7 @@ package com.appium.appium_test;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -10,20 +11,18 @@ import java.util.List;
 
 public class FirstTest extends AppiumBasics {
 
+
+
     @Test
-    public void firstTest() {
-        ArrayList<String> productNames = new ArrayList<String>();
-        driver.findElement(AppiumBy.className("android.widget.EditText")).sendKeys("John");
-        driver.findElement(AppiumBy.className("android.widget.Button")).click();
-        List<WebElement> products = driver.findElements(AppiumBy.androidUIAutomator(
-                "new UiSelector().className(\"android.widget.TextView\")"));
+    public void emulatorTest() {
 
-        for(WebElement product:products) {
-            productNames.add(product.getText());
-        }
-
-        for(String productName:productNames) {
-            System.out.println(productName);
-        }
+        driver.findElement(AppiumBy.accessibilityId("Preference")).click();
+        driver.findElement(AppiumBy.accessibilityId("3. Preference dependencies")).click();
+        driver.findElement(AppiumBy.id("android:id/checkbox")).click();
+        driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text(\"WiFi settings\")")).click();
+        driver.findElement(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"android:id/edit\"]")).sendKeys("WifiSet");
+        String AlertTitle = driver.findElement(By.id("android:id/alertTitle")).getText();
+        Assert.assertEquals("WiFi settings",AlertTitle);
+        driver.findElement(By.id("android:id/button1")).click();
     }
 }

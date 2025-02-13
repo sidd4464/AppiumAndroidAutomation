@@ -1,14 +1,7 @@
 {
   "platformName": "Android",
-  "deviceName": "Nothing Phone 2A",
-  "udid": "9014eff7",
-  "appPackage": "com.androidsample.generalstore",
-  "appActivity": "com.androidsample.generalstore.SplashActivity",
-  "noReset": true,
-  "automationName": "UiAutomator2",
-  "noReset": false,
-  "autoGrantPermissions": true,
-  "unlockType": "pin",
-  "unlockKey": "2481",
-  "newCommandTimeout":60
+  "deviceName": "Small Phone API 33",
+  "automationName": "UIAutomator2",
+  "noReset": false
+
 }
