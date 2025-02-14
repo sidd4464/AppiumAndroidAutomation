@@ -1,5 +1,8 @@
 package com.appium.appium_test;
 
+import Pages.AppObjects;
+import Pages.AppPageOne;
+import com.beust.ah.A;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -15,14 +18,27 @@ public class FirstTest extends AppiumBasics {
 
     @Test
     public void emulatorTest() {
-
-        driver.findElement(AppiumBy.accessibilityId("Preference")).click();
-        driver.findElement(AppiumBy.accessibilityId("3. Preference dependencies")).click();
-        driver.findElement(AppiumBy.id("android:id/checkbox")).click();
-        driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text(\"WiFi settings\")")).click();
-        driver.findElement(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"android:id/edit\"]")).sendKeys("WifiSet");
-        String AlertTitle = driver.findElement(By.id("android:id/alertTitle")).getText();
-        Assert.assertEquals("WiFi settings",AlertTitle);
-        driver.findElement(By.id("android:id/button1")).click();
+        pageOne.clickOnPrefernce();
+        pageOne.clickOnPreferenceOption();
+        pageOne.clickOnCheckBox();
+        pageOne.clickOnWifiSettings();
+        Assert.assertEquals(pageOne.getAlertTitle(),"WiFi settings");
+        pageOne.enterWifiSettings("Settings");
+        pageOne.clickOnOkayButton();
     }
+
+    @Test
+    public static void longPressCheck(){
+        pageOne.scrollToElement("Views");
+        pageOne.clickOnViews();
+        pageOne.clickOnExpandableLists();
+        pageOne.ClickOnCustomAdapter();
+        pageOne.performLongPress();
+        Assert.assertEquals(pageOne.getSampleMenuTest(),"Sample menu");
+
+    }
+
+
 }
+
+

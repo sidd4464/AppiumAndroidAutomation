@@ -1,5 +1,7 @@
 package com.appium.appium_test;
 
+import Pages.AppObjects;
+import Pages.AppPageOne;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import core.ConfigureCapabilites;
 import io.appium.java_client.android.AndroidDriver;
@@ -29,6 +31,7 @@ public class AppiumBasics {
 
     protected AndroidDriver driver;
     protected AppiumDriverLocalService serviceBuilder;
+    public static AppPageOne pageOne;
 
     public static String getConfigFilePath() {
         String ConfigFilePath = "src/resources/Config.json";
@@ -93,6 +96,10 @@ public class AppiumBasics {
             options.setNoReset(config.isNoReset());
 
              driver = new AndroidDriver(new URL(getURL()), options);
+            AppObjects.setDriver(driver);
+
+            // Initialize the page object
+            pageOne = new AppPageOne();
             if (driver.isDeviceLocked()) {
                 driver.unlockDevice();
             }
